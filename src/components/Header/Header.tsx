@@ -1,7 +1,7 @@
 import React from "react";
-import './Header.css';
+import classes from './Header.module.css';
 export const Header = () => {
-    return  <header className='header'>
+    return  <header className={classes.header}>
         <img src={'https://www.reestr35.ru/img/products/big/8509.jpg'}/>
     </header>
 }
