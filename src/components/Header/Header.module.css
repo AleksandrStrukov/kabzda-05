@@ -1,8 +1,8 @@
-.header {
+.contents {
     grid-area: h;
-    background-color: aquamarine;
+    background-color: purple;
+    color: green;
 }
-
-.header img {
-    width: 60px;
-}
+ .contents img {
+     width: 60px;
+ }

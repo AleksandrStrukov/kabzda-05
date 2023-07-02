@@ -3,11 +3,20 @@
     width: 1000px;
     margin: 0 auto;
     grid-template-areas:
-  "h h"
-  "n c";
+  "h h h"
+  "n c c";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     /*grid-gap: 10px;*/
+
+}
+
+.app-wrapper-content {
+
+    grid-area: c;
+    background-color: cyan;
+    color: purple;
+
 
 }
 
