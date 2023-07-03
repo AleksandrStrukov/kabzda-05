@@ -3,10 +3,10 @@ import classes from "./Nav.module.css"
 export const Navbar = () => {
     return   <nav className={classes.nav}>
         <div className={classes.item}>
-            <a>Profile</a>
+            <a href = '/profile'>Profile</a>
         </div>
         <div className={classes.item}>
-            <a>Messages</a>
+            <a href = '/Dialogs'>Messages</a>
         </div>
         <div className={classes.item}>
             <a>News</a>
