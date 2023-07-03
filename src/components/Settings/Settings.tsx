@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Dialogs =() => {
+export const Settings =() => {
     return (
         <div>
-            Dialogs
+            Settings
         </div>
        )
 }

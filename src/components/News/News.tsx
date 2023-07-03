@@ -1,9 +1,8 @@
 import React from "react";
-
-export const Dialogs =() => {
+export const News = () => {
     return (
         <div>
-            Dialogs
+            News
         </div>
-       )
+    )
 }
