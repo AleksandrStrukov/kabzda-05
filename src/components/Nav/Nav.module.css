@@ -1,11 +1,14 @@
 .nav {
     grid-area: n;
     background-color: yellow;
-    padding:20px;
+    border-radius: 50px;
+    padding: 45px;
+    font-family: "Berlin Sans FB";
 }
 .item a{
      color: red;
     text-decoration: purple;
+
 }
 .item a:active {
     color: green;

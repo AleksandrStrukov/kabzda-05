@@ -1,0 +1,20 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 11fr;
+    border-radius: 20px;
+    font-family: "Berlin Sans FB";
+}
+
+.dialogsItems .dialog {
+    padding: 11px;
+}
+.dialogsItems .active {
+    color: darkorange;
+}
+.messages {
+    padding: 11px;
+}
+
+.message {
+
+}

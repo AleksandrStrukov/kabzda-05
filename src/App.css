@@ -7,7 +7,8 @@
   "n c c";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-    /*grid-gap: 10px;*/
+
+
 
 }
 
@@ -16,6 +17,12 @@
     grid-area: c;
     background-color: cyan;
     color: purple;
+    border-radius: 50px;
+    padding: 40px;
+    font-family: "Berlin Sans FB";
+    font-optical-sizing: auto;
+
+
 
 
 }
