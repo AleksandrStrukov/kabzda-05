@@ -12,9 +12,10 @@
     color: darkorange;
 }
 .messages {
-    padding: 11px;
+    padding: 15px;
 }
 
-.message {
-
+.messages .message {
+    color: deeppink ;
+    padding: 10px;
 }
