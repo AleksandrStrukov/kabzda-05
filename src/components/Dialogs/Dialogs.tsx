@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Dialogs.module.css"
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {dialogsData, messagesData} from "../../index";
+
 
 
 
@@ -10,12 +10,12 @@ import {dialogsData, messagesData} from "../../index";
 
 export const Dialogs = (props: any) => {
 
-    let dialogElement = dialogsData
-        .map(n => <DialogItem name={n.name} id={n.id}/>);
+    let dialogElement = props.dialogsData
+        .map((n: { name: string; id: number; }) => <DialogItem name={n.name} id={n.id}/>);
 
 
-    let messageElement = messagesData
-        .map(m => <MessageItem message={m.message}/>)
+    let messageElement = props.messagesData
+        .map((m: { message: string; }) => <MessageItem message={m.message}/>)
 
 
     return (

@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./post/Post";
-import {postsData} from "../../../index";
-
-export const MyPosts = () => {
 
 
-let postElement = postsData
-    .map(p =>  <Post message={p.message} like={p.likesCount}/>)
+export const MyPosts = (props:any) => {
+
+
+let postElement = props.posts
+    .map((p: { message: string; likesCount: number; }) =>  <Post message={p.message} like={p.likesCount}/>)
 
 
 
