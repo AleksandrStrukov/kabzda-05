@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Nav.module.css"
 import {NavLink} from "react-router-dom";
+import {Friends, FriendsReturn} from "../Friends/Friends";
+import { state } from "../../redux/state";
 export const Navbar = () => {
     // @ts-ignore
     return   (
@@ -20,6 +22,12 @@ export const Navbar = () => {
         <div className={classes.item}>
             <NavLink to = '/Settings'>Settings</NavLink>
         </div>
+            <div>
+                <div className={classes.friends}>
+                    <FriendsReturn/>
+            </div>
+            </div>
     </nav>
+
     )
 }
