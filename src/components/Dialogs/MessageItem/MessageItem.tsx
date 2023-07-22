@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useRef} from "react";
 import classes from "./../Dialogs.module.css"
 
 
 
 
 export const MessageItem = (props: any) => {
-    return <div className={classes.message}>{props.message}</div>
-}
+
+    return (<div className={classes.message}>{props.message}
+{/* */}
+    </div>)};

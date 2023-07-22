@@ -17,13 +17,12 @@ export const MyPosts = (props: any) => {
         .map((p: any) => <Post message={p.message} like={p.like}/>)
 
 
-    // let newPostElement = createRef();
+
     let addPost = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value;
             alert(text);
-        }
-        };
+        }};
 
         return <div>
             <div>

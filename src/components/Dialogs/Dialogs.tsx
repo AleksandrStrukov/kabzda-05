@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import classes from "./Dialogs.module.css"
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {MessageItem} from "./MessageItem/MessageItem";
@@ -9,7 +9,13 @@ import {MessageItem} from "./MessageItem/MessageItem";
 
 
 export const Dialogs = (props: any) => {
-
+    let newMessageElement = useRef<HTMLTextAreaElement>(null);
+    ;
+    let addMessage = () => {
+        if (newMessageElement.current) {
+            let text = newMessageElement.current.value;
+            alert(text);
+        }};
     let dialogElement = props.dialogsData
         .map((n: { name: string; id: number; }) => <DialogItem name={n.name} id={n.id}/>);
 
@@ -28,6 +34,14 @@ export const Dialogs = (props: any) => {
             </div>
             <div className={classes.messages}>
                 {messageElement}
+            </div>
+            <div>
+                <div>
+
+                    <textarea ref={newMessageElement}/>
+
+                </div>
+                <button onClick={addMessage}>Add post</button>
             </div>
         </div>
     )
