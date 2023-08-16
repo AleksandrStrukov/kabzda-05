@@ -1,7 +1,7 @@
-import React, {createRef, useRef} from "react";
+import React, {ChangeEvent, createRef, useRef} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./post/Post";
-import {state, updateNewPostText} from "../../../redux/state";
+import {store} from "../../../redux/state";
 
 type myPostsPropsType = {
     message: string;
@@ -18,12 +18,13 @@ export const MyPosts = (props: any) => {
 
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({type: 'ADD-POST'});
     };
 
-    let onPostChange = () => {
+    let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const text: any = newPostElement.current?.value;
-        props.updateNewPostText(text);
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        props.dispatch(action);
     }
 
     return <div>
@@ -33,7 +34,7 @@ export const MyPosts = (props: any) => {
         <div>
             <div>
 
-                <textarea onChange={onPostChange} value={props.newPostText} ref={newPostElement} />
+                <textarea onChange={onPostChange} value={props.newPostText} ref={newPostElement}/>
 
             </div>
             <button onClick={addPost}>Add post</button>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {addPost, state, subscribe, updateNewPostText} from "./redux/state";
+import {store} from "./redux/state";
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -15,10 +15,10 @@ let rerernderEntireTree = (state:any) => {
     );
     root.render(
         <BrowserRouter>
-            <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+            <App state={store._state} dispatch={store.dispatch.bind(store)}/>
         </BrowserRouter>
     );
 }
-rerernderEntireTree(state);
-subscribe(rerernderEntireTree)
+rerernderEntireTree(store.getState());
+store.subscribe(rerernderEntireTree)
 

@@ -9,15 +9,15 @@ import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import {News} from './components/News/News';
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {Friends} from "./components/Friends/Friends";
-import {addPost, updateNewPostText} from "./redux/state";
+import {store} from "./redux/state";
+import {Friends, FriendsReturn} from "./components/Friends/Friends";
 
 
 const App = (props: any) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar/>
+            <Navbar name={props.state.friends}/>
 
             <div className='app-wrapper-content'>
                 <Routes>
@@ -25,10 +25,13 @@ const App = (props: any) => {
                            element={<Dialogs dialogsData={props.state.dialogsData}
                                              messagesData={props.state.messagesData}/>}/>
                     <Route path='/profile' element={<Profile posts={props.state.posts}
-                                                             addPost={props.addPost}
-                                                             newPostText={props.state.newPostText}
-                                                             updateNewPostText={props.updateNewPostText}/>}/>
+                                                             dispatch={props.dispatch}
+                                                             newPostText={props.state.newPostText}/>}/>
+
                     <Route path='/news' element={<News/>}/>
+                    {/*<Route path='/friends' element={<Friends name={store._state.friends}/>}/>*/}
+                    {/*<Route path='/friends' element={<FriendsReturn name={store._state.friends}/>}/>*/}
+
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
 
