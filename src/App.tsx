@@ -25,8 +25,7 @@ const App = (props: any) => {
                            element={<Dialogs dialogsData={props.state.dialogsData}
                                              messagesData={props.state.messagesData}/>}/>
                     <Route path='/profile' element={<Profile posts={props.state.posts}
-                                                             dispatch={props.dispatch}
-                                                             newPostText={props.state.newPostText}/>}/>
+                                                             dispatch={props.dispatch}/>}/>
 
                     <Route path='/news' element={<News/>}/>
                     {/*<Route path='/friends' element={<Friends name={store._state.friends}/>}/>*/}

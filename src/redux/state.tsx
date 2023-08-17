@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
 export let store = {
     _state: {
         posts: [
@@ -39,7 +42,7 @@ export let store = {
     },
 
     dispatch(action: any) {
-        if (action === 'ADD-POST') {
+        if (action === ADD_POST) {
             let newPost = {
                 id: 5,
                 message: this._state.newPostText,
@@ -49,11 +52,16 @@ export let store = {
             this._state.posts.push(newPost);
             this._state.newPostText = '';
             this._callSubscriber(this.getState());
-        } else if (action === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action === UPDATE_NEW_POST_TEXT) {
             this._state.newPostText = action.newText;
             this._callSubscriber(this._state);
         }
     }
 }
+
+export const AddPostActionCreactor = () => ({type: ADD_POST})
+export const UpdateNewPostTextActionCreactor = (text: string) => ({
+    type: UPDATE_NEW_POST_TEXT, newText: text
+})
 export default store;
 // window.store = store;

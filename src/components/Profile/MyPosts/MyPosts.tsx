@@ -1,14 +1,13 @@
 import React, {ChangeEvent, createRef, useRef} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./post/Post";
-import {store} from "../../../redux/state";
+import {AddPostActionCreactor, store, UpdateNewPostTextActionCreactor} from "../../../redux/state";
 
 type myPostsPropsType = {
     message: string;
     likesCount: number
 
 }
-
 export const MyPosts = (props: any) => {
     let newPostElement = useRef<HTMLTextAreaElement>(null);
 
@@ -18,12 +17,12 @@ export const MyPosts = (props: any) => {
 
 
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(AddPostActionCreactor());
     };
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const text: any = newPostElement.current?.value;
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        let action = UpdateNewPostTextActionCreactor(text);
         props.dispatch(action);
     }
 
