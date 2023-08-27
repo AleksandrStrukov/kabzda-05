@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {store} from "./redux/state";
+import store from "./redux/reduxStore";
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -15,10 +15,12 @@ let rerernderEntireTree = (state:any) => {
     );
     root.render(
         <BrowserRouter>
-            <App state={store._state} dispatch={store.dispatch.bind(store)} store={store}/>
+            <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
         </BrowserRouter>
     );
 }
 rerernderEntireTree(store.getState());
-store.subscribe(rerernderEntireTree)
+store.subscribe(()=> {
+    let state = store.getState();
+    rerernderEntireTree(state)});
 
