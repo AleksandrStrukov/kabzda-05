@@ -2,13 +2,13 @@ import React, {ChangeEvent, useRef} from "react";
 import classes from "./Dialogs.module.css"
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {sendMessageCreator, UpdateNewMessageBodyCreactor} from "../../redux/state";
+import {sendMessageCreator, UpdateNewMessageBodyCreactor} from "../../redux/DialogsReducer";
 
 
 export const Dialogs = (props: any) => {
 
-    let stateDial = props.store.getState().dialogsData;
-    let stateMess = props.store.getState().messagesData;
+    let stateDial = props.store.getState().dialogsPage.dialogsData;
+    let stateMess = props.store.getState().dialogsPage.messagesData;
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
     // let addMessage = () => {
@@ -23,7 +23,7 @@ export const Dialogs = (props: any) => {
 
     let messageElement = stateMess
         .map((m: { message: string}) => <MessageItem message={m.message}/>);
-    let newMessageBody:string = props.store._state.newMessageBody;
+    let newMessageBody:string = props.store._state.dialogsPage.newMessageBody;
     let onSendMessageClick = () => {
         props.store.dispatch(sendMessageCreator());
     }

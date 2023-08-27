@@ -17,17 +17,18 @@ const App = (props: any) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar name={props.state.friends}/>
+            <Navbar name={props.state.dialogsPage.friends}/>
 
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/dialogs'
                            element={<Dialogs store={props.store}
-                                             // dialogsData={props.state.dialogsData}
-                                             // messagesData={props.state.messagesData}
-                               />}/>
-                    <Route path='/profile' element={<Profile posts={props.state.posts}
-                                                             dispatch={props.dispatch}/>}/>
+                               // dialogsData={props.state.dialogsData}
+                               // messagesData={props.state.messagesData}
+                           />}/>
+                    <Route path='/profile' element={<Profile posts={props.state.profilePage.posts}
+                                                             dispatch={props.dispatch}
+                                                             newPostText={props.state.profilePage.newPostText}/>}/>
 
                     <Route path='/news' element={<News/>}/>
                     {/*<Route path='/friends' element={<Friends name={store._state.friends}/>}/>*/}
