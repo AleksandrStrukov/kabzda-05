@@ -25,7 +25,7 @@ export const Navbar = (props:any) => {
             <div>
                 <div className={classes.friends}>
                     {/*<Friends/>*/}
-                    <FriendsReturn name={props.name}/>
+                    <FriendsReturn name={props.friends}/>
             </div>
             </div>
     </nav>

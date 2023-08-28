@@ -1,7 +1,7 @@
 import React, {ChangeEvent, createRef, useRef} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./post/Post";
-import {AddPostActionCreactor, UpdateNewPostTextActionCreactor} from "../../../redux/PropfileReducer";
+
 
 type myPostsPropsType = {
     message: string;
@@ -17,13 +17,14 @@ export const MyPosts = (props: any) => {
 
 
     let addPost = () => {
-        props.dispatch(AddPostActionCreactor());
+        props.addPost()
+
     };
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const text: any = newPostElement.current?.value;
-        let action = UpdateNewPostTextActionCreactor(text);
-        props.dispatch(action);
+        let text: any = newPostElement.current?.value;
+        props.updateNewPostText(text);
+
     }
 
     return <div>

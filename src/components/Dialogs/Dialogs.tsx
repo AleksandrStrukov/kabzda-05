@@ -6,7 +6,7 @@ import {sendMessageCreator, UpdateNewMessageBodyCreactor} from "../../redux/Dial
 
 
 export const Dialogs = (props: any) => {
-
+let state= props.dialogsPage;
     let stateDial = props.store.getState().dialogsPage.dialogsData;
     let stateMess = props.store.getState().dialogsPage.messagesData;
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
@@ -25,11 +25,12 @@ export const Dialogs = (props: any) => {
         .map((m: { message: string}) => <MessageItem message={m.message}/>);
     let newMessageBody:string = props.store._state.dialogsPage.newMessageBody;
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.sendMessage();
     }
     let onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>)=> {
         let body = e.target.value;
-        props.store.dispatch(UpdateNewMessageBodyCreactor(body));
+        props.updateNewMessageBody(body)
+
     }
 
     return (

@@ -1,37 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Nav/Nav";
 import {Profile} from "./components/Profile/Profile";
-import {Dialogs} from "./components/Dialogs/Dialogs";
+
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import {News} from './components/News/News';
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {store} from "./redux/state";
-import {Friends, FriendsReturn} from "./components/Friends/Friends";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import store from "./redux/reduxStore";
+// import {Friends} from "./components/Friends/Friends";
+;
 
 
 const App = (props: any) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar name={props.state.dialogsPage.friends}/>
+            <Navbar name={props.store.dialogsPage.friends}/>
 
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path='/dialogs'
-                           element={<Dialogs store={props.store}
+                           element={<DialogsContainer
+                               // store={props.store}
                                // dialogsData={props.state.dialogsData}
                                // messagesData={props.state.messagesData}
                            />}/>
-                    <Route path='/profile' element={<Profile posts={props.state.profilePage.posts}
-                                                             dispatch={props.dispatch}
-                                                             newPostText={props.state.profilePage.newPostText}/>}/>
-
+                    <Route path='/profile' element={<Profile />}/>
+                    {/*store={props.store}*/}
                     <Route path='/news' element={<News/>}/>
-                    {/*<Route path='/friends' element={<Friends name={store._state.friends}/>}/>*/}
+                    {/*<Route path='/friends' element={<Friends friends={store._state.dialogsPage.friends}/>}/>*/}
                     {/*<Route path='/friends' element={<FriendsReturn name={store._state.friends}/>}/>*/}
 
                     <Route path='/music' element={<Music/>}/>
