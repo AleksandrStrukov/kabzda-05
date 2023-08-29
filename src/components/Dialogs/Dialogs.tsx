@@ -2,7 +2,7 @@ import React, {ChangeEvent, useRef} from "react";
 import classes from "./Dialogs.module.css"
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {MessageItem} from "./MessageItem/MessageItem";
-import {sendMessageCreator, UpdateNewMessageBodyCreactor} from "../../redux/DialogsReducer";
+
 
 
 export const Dialogs = (props: any) => {
@@ -11,13 +11,7 @@ let state= props.dialogsPage;
     let stateMess = props.store.getState().dialogsPage.messagesData;
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
-    // let addMessage = () => {
-    //     if (newMessageElement.current) {
-    //         let text = newMessageElement.current.value;
-    //         alert(text);
-    //     }
-    // };
-    let dialogElement = stateDial
+        let dialogElement = stateDial
         .map((n: { name: string; id: number}) => <DialogItem name={n.name} id={n.id}/>);
 
 
