@@ -10,7 +10,7 @@ import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import store from "./redux/reduxStore";
-// import {Friends} from "./components/Friends/Friends";
+
 ;
 
 
@@ -18,7 +18,7 @@ const App = (props: any) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar name={props.store.dialogsPage.friends}/>
+            <Navbar name={store.getState().DialogsPage.friends}/>
 
             <div className='app-wrapper-content'>
                 <Routes>

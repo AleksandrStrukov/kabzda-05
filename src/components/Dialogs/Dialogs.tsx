@@ -12,7 +12,7 @@ let state= props.dialogsPage;
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
         let dialogElement = stateDial
-        .map((n: { name: string; id: number}) => <DialogItem name={n.name} id={n.id}/>);
+        .map((n: { name: string; id: number}) => <DialogItem name={n.name} id={n.id} key = {n.id}/>);
 
 
     let messageElement = stateMess
@@ -23,7 +23,7 @@ let state= props.dialogsPage;
     }
     let onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>)=> {
         let body = e.target.value;
-        props.updateNewMessageBody(body)
+        props.updateNewMessageBody(body);
 
     }
 
