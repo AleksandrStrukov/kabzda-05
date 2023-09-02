@@ -10,7 +10,8 @@ import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import store from "./redux/reduxStore";
-import Users from "./components/users/Users";
+import UsersContainer from "./components/users/UsersContainer";
+
 
 ;
 

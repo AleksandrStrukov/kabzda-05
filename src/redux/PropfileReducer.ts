@@ -1,8 +1,10 @@
+
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 let initialState = {
-    posts: [
+    posts:  [
         {id: 1, message: 'Hey!Are you OK?', likesCount: 11},
         {id: 2, message: "JOhn is come in!", likesCount: 14},
     ],

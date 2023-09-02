@@ -4,11 +4,11 @@ import {MyPosts} from "./MyPosts";
 
 import {connect} from "react-redux";
 
-type myPostsPropsType = {
-    message: string;
-    likesCount: number
-
-}
+// type myPostsPropsType = {
+//     message: string;
+//     likesCount: number
+//
+// }
 
 const mapStateToProps = (state: any)=>{
     return {

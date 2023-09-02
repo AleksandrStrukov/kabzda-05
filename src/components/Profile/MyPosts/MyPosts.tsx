@@ -3,17 +3,17 @@ import classes from "./MyPosts.module.css"
 import {Post} from "./post/Post";
 
 
-type myPostsPropsType = {
-    message: string;
-    likesCount: number
-
-}
+// type myPostsPropsType = {
+//     message: string;
+//     likesCount: number
+//
+// }
 export const MyPosts = (props: any) => {
     let newPostElement = useRef<HTMLTextAreaElement>(null);
 
 
     let postElement = props.posts
-        .map((p: myPostsPropsType) => <Post message={p.message} like={p.likesCount}/>)
+        .map((p: any) => <Post message={p.message} like={p.likesCount}/>)
 
 
     let addPost = () => {

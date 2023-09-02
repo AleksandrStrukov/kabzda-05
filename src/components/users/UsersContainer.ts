@@ -7,7 +7,7 @@ import users from "./Users";
 
 let maoStateToProps =(state: any)=> {
 return {
-    users: state.usersPage.users;
+    users: state.usersPage.users
 }
 }
 let mapDispatchToProps =(dispatch: any)=> {
@@ -15,10 +15,10 @@ let mapDispatchToProps =(dispatch: any)=> {
         follow: (userID:string)=> {
             dispatch(followAC(userID));
         },
-        unfollow: (userID: string)=> {
+        unfollow: (userID: string):void=> {
             dispatch(unfollowAC(userID));
         },
-        setUsers: (users) => {
+        setUsers: (users:any) => {
             dispatch(setUsersAC(users ))
         }
     }
