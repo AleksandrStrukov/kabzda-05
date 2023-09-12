@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import Users from "./Users";
+
 import {userInfo} from "os";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/usersReducer";
-import users from "./Users";
+
 
 let maoStateToProps =(state: any)=> {
 return {
