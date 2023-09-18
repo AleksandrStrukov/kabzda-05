@@ -2,13 +2,14 @@ import React from "react";
 import styles from './users.module.css'
 import * as Axios from "axios";
 import userPhoto from '../../assets/images/images.jpg'
+import axios from "axios";
 
 type photoResponseType = {
     small: null | string
     large: null | string
 }
 
-type responseType =
+export type responseType =
     {
         name: string
         id: number
@@ -17,10 +18,10 @@ type responseType =
         status: null | string
         followed: boolean
     }
-export const Users = (props: any) => {
+export const Users = (props: any|undefined) => {
     if (props.user.length === 0) {
-        Axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: responseType) => {
-            props.setUsers(response.data.items)
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response:any): any => {
+            props.setUsers(response.items)
         })
         // props.setUsers(
         //     [
