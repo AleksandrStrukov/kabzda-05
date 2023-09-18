@@ -7,7 +7,9 @@ import {Users} from "./Users";
 
 let maoStateToProps =(state: any)=> {
 return {
-    users: state.usersPage.users
+    users: state.usersPage.users,
+    pageSize: state.usersPage.pageSize,
+    totelUsersCount:state.usersPage.totelUsersCount
 }
 }
 let mapDispatchToProps =(dispatch: any)=> {

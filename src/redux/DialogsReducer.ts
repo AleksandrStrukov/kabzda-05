@@ -3,8 +3,12 @@ import {dialogsPageType, storeType} from "./state";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
-let initialState = {
-    dialogsPage: <dialogsPageType> {
+type initialStateType = {
+    dialogsPage: dialogsPageType
+}
+
+let initialState: initialStateType = {
+    dialogsPage: {
         messagesData: [
             {id: 1, message: 'Hey!'},
             {id: 2, message: 'How is the weather like today!'},
@@ -28,7 +32,7 @@ let initialState = {
             {id: 3, name: 'Tania'}
         ]
     }}
-const DialogsReducer = (state: any = initialState, action: any) => {
+const DialogsReducer = (state: initialStateType = initialState, action: any) => {
 
 
 
@@ -38,11 +42,11 @@ const DialogsReducer = (state: any = initialState, action: any) => {
 
             return {...state, newMessageBody: action.body};
         case SEND_MESSAGE:
-            let body = state.newMessageBody;
+            let body = state.dialogsPage.newMessageBody;
 
             return {...state,
                 newMessageBody: '',
-                messagesData: [...state.messagesData, {id: 6, message: body}]};
+                messagesData: [...state.dialogsPage.messagesData, {id: 6, message: body}]};
         default:
             return state;
     }

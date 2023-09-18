@@ -1,7 +1,7 @@
 import ProfileReducer from "./PropfileReducer";
 import DialogsReducer from "./DialogsReducer";
 
-type postsType = {
+export type postsType = {
     id: number
     message: string
     likesCount: number
@@ -40,7 +40,7 @@ export type stateType = {
 export type storeType = {
     _state: stateType
     _callSubscriber: (state: stateType)=> void
-    getState: ()=>void
+    getState: ()=>stateType
     subscribe: (observer: any)=>void
     dispatch: (action:any)=>void
 }
@@ -78,7 +78,7 @@ export let store: storeType = {
             ]
         }
     },
-    _callSubscriber(state: stateType) {
+    _callSubscriber(_state: stateType) {
         console.log('hhh');
     },
     getState() {

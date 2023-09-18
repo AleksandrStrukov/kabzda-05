@@ -6,17 +6,33 @@ import axios from "axios";
 import {render} from "@testing-library/react";
 import any = jasmine.any;
 
+type photoResponseType = {
+    small: null | string
+    large: null | string
+}
+type itemsType = {
+    name: string
+    id: number
+    uniqueUrlName: null | string
+    photos: photoResponseType
+    status: null | string
+    followed: boolean
+}
+type responseType = {
+    items: Array<itemsType>
 
+}
 class Users extends React.Component<any, any> {
 
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any): any => {
-            this.props.setUsers(response.items)
+        axios.get<responseType>('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
+            this.props.setUsers(response.data.items)
         });
     }
 
     render = () => {
+        let pagesCount = this.props.totelUsersCount / this.props.pageSize;
         return <div>
 
             {this.props.users.map((u: any) => (<div key={u.id}>

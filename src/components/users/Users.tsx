@@ -1,25 +1,27 @@
 import React from "react";
 import styles from './users.module.css'
-import * as Axios from "axios";
+import axios from "axios";
 import userPhoto from '../../assets/images/images.jpg'
 
 type photoResponseType = {
     small: null | string
     large: null | string
 }
+type itemsType = {
+    name: string
+    id: number
+    uniqueUrlName: null | string
+    photos: photoResponseType
+    status: null | string
+    followed: boolean
+}
+type responseType = {
+    items: Array<itemsType>
 
-type responseType =
-    {
-        name: string
-        id: number
-        uniqueUrlName: null | string
-        photos: photoResponseType
-        status: null | string
-        followed: boolean
-    }
+}
 export const Users = (props: any) => {
     if (props.user.length === 0) {
-        Axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: responseType) => {
+        axios.get<responseType>('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
             props.setUsers(response.data.items)
         })
         // props.setUsers(
@@ -60,6 +62,12 @@ export const Users = (props: any) => {
         //     ],)}
 
         return <div>
+            <div>
+                <span>1</span>
+                <span>2</span>
+                <span className={styles.selected}>3</span>
+                <span>4</span>
+            </div>
             {props.users.map((u: any) => (<div key={u.id}>
             <span>
                 <div>
