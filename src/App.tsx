@@ -20,7 +20,7 @@ const App = (props: any) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar name={store.getState().DialogsPage.friends}/>
+            <Navbar friends={store.getState().DialogsPage.friends}/>
 
             <div className='app-wrapper-content'>
                 <Routes>

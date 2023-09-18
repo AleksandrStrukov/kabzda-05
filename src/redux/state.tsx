@@ -1,9 +1,51 @@
 import ProfileReducer from "./PropfileReducer";
 import DialogsReducer from "./DialogsReducer";
 
+type postsType = {
+    id: number
+    message: string
+    likesCount: number
+}
 
+type profilePageType = {
+    posts: Array<postsType>
+    newPostText: string
+}
 
-export let store = {
+type messagesDataType = {
+    id: number
+    message: string
+}
+
+type dialogsDataType = {
+    id: number
+    name: string
+}
+
+export type friendsType = {
+    id: number
+    name: string
+}
+
+export type dialogsPageType = {
+    messagesData: Array<messagesDataType>
+    dialogsData: Array<dialogsDataType>
+    newMessageBody: string
+    friends: Array<friendsType>
+}
+export type stateType = {
+    profilePage: profilePageType
+    dialogsPage: dialogsPageType
+}
+export type storeType = {
+    _state: stateType
+    _callSubscriber: (state: stateType)=> void
+    getState: ()=>void
+    subscribe: (observer: any)=>void
+    dispatch: (action:any)=>void
+}
+
+export let store: storeType = {
     _state: {
         profilePage: {
             posts: [
@@ -36,7 +78,7 @@ export let store = {
             ]
         }
     },
-    _callSubscriber(state: any) {
+    _callSubscriber(state: stateType) {
         console.log('hhh');
     },
     getState() {

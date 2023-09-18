@@ -2,14 +2,13 @@ import React from "react";
 import styles from './users.module.css'
 import * as Axios from "axios";
 import userPhoto from '../../assets/images/images.jpg'
-import axios from "axios";
 
 type photoResponseType = {
     small: null | string
     large: null | string
 }
 
-export type responseType =
+type responseType =
     {
         name: string
         id: number
@@ -18,13 +17,11 @@ export type responseType =
         status: null | string
         followed: boolean
     }
-export const Users = (props: any | undefined) => {
-    let getUsers = () => {
-        if (props.user.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any): any => {
-                props.setUsers(response.items)
-            })
-        }
+export const Users = (props: any) => {
+    if (props.user.length === 0) {
+        Axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: responseType) => {
+            props.setUsers(response.data.items)
+        })
         // props.setUsers(
         //     [
         //         {
@@ -63,7 +60,6 @@ export const Users = (props: any | undefined) => {
         //     ],)}
 
         return <div>
-            <button onClick={getUsers}>Get Users</button>
             {props.users.map((u: any) => (<div key={u.id}>
             <span>
                 <div>

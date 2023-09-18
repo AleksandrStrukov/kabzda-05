@@ -3,7 +3,10 @@ import classes from "./Dialogs.module.css"
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {MessageItem} from "./MessageItem/MessageItem";
 
-
+type DialogElType ={
+    name: string;
+    id: number
+}
 
 export const Dialogs = (props: any) => {
 let state= props.dialogsPage;
@@ -12,7 +15,7 @@ let state= props.dialogsPage;
     let newMessageElement = useRef<HTMLTextAreaElement>(null);
 
         let dialogElement = stateDial
-        .map((n: { name: string; id: number}) => <DialogItem name={n.name} id={n.id} key = {n.id}/>);
+        .map((n: DialogElType) => <DialogItem name={n.name} id={n.id} key = {n.id}/>);
 
 
     let messageElement = stateMess

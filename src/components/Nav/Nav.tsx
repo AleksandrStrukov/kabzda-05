@@ -2,8 +2,8 @@ import React from "react";
 import classes from "./Nav.module.css"
 import {NavLink} from "react-router-dom";
 import {Friends, FriendsReturn} from "../Friends/Friends";
-import { store } from "../../redux/state";
-export const Navbar = (props:any) => {
+import {friendsType, store} from "../../redux/state";
+export const Navbar = (friends:Array <friendsType>) => {
     // @ts-ignore
     return   (
         <nav className={classes.nav}>
@@ -25,7 +25,7 @@ export const Navbar = (props:any) => {
             <div>
                 <div className={classes.friends}>
                     {/*<Friends/>*/}
-                    <FriendsReturn name={props.friends}/>
+                    <FriendsReturn friends={friends}/>
             </div>
             </div>
     </nav>

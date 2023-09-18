@@ -1,9 +1,10 @@
 import ProfileReducer from "./PropfileReducer";
+import {dialogsPageType, storeType} from "./state";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 let initialState = {
-    dialogsPage: {
+    dialogsPage: <dialogsPageType> {
         messagesData: [
             {id: 1, message: 'Hey!'},
             {id: 2, message: 'How is the weather like today!'},

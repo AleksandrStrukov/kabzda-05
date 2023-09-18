@@ -8,14 +8,13 @@ import any = jasmine.any;
 
 
 class Users extends React.Component<any, any> {
-    constructor(props: any) {
-        super(props);
 
+
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any): any => {
             this.props.setUsers(response.items)
         });
     }
-
 
     render = () => {
         return <div>
