@@ -18,11 +18,13 @@ export type responseType =
         status: null | string
         followed: boolean
     }
-export const Users = (props: any|undefined) => {
-    if (props.user.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response:any): any => {
-            props.setUsers(response.items)
-        })
+export const Users = (props: any | undefined) => {
+    let getUsers = () => {
+        if (props.user.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any): any => {
+                props.setUsers(response.items)
+            })
+        }
         // props.setUsers(
         //     [
         //         {
@@ -61,6 +63,7 @@ export const Users = (props: any|undefined) => {
         //     ],)}
 
         return <div>
+            <button onClick={getUsers}>Get Users</button>
             {props.users.map((u: any) => (<div key={u.id}>
             <span>
                 <div>
