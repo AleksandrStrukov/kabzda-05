@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {followAC, setUsersAC, unfollowAC} from "../../redux/usersReducer";
+import {followAC, setCurrentPageAC, setUsersAC, unfollowAC} from "../../redux/usersReducer";
 import {Users} from "./Users";
 
 
@@ -9,7 +9,8 @@ let maoStateToProps =(state: any)=> {
 return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
-    totelUsersCount:state.usersPage.totelUsersCount
+    totelUsersCount:state.usersPage.totelUsersCount,
+    currentPage: state.usersPage.currentPage
 }
 }
 let mapDispatchToProps =(dispatch: any)=> {
@@ -22,6 +23,12 @@ let mapDispatchToProps =(dispatch: any)=> {
         },
         setUsers: (users:any) => {
             dispatch(setUsersAC(users ))
+        },
+        setCurrentPage: (pageNumber: number) => {
+            dispatch(setCurrentPageAC(pageNumber))
+    },
+        setTotelUsersCount: (totalCount: number) => {
+            dispatch(setTotelUsersCountAC(totalCount))
         }
     }
 }
