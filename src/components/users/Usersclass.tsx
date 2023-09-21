@@ -5,6 +5,7 @@ import userPhoto from '../../assets/images/images.jpg'
 import axios from "axios";
 import {render} from "@testing-library/react";
 import any = jasmine.any;
+import {setTotelUsersCountAC} from "../../redux/usersReducer";
 
 type photoResponseType = {
     small: null | string
@@ -20,6 +21,7 @@ type itemsType = {
 }
 type responseType = {
     items: Array<itemsType>
+    totalCount: number
 
 }
 class Users extends React.Component<any, any> {
@@ -48,7 +50,7 @@ onPageChanged = (pageNumber:number) => {
         return <div>
             <div>
                 {pages.map(p=> {
-                    return <span className={this.props.currentPage === p && styles.selected} onClick={(e)=> {this.onPageChanged(p)}}>{p}</span>
+                    return <span className={this.props.currentPage && styles.selected} onClick={(e)=> {this.onPageChanged(p)}}>{p}</span>
                 })}
             </div>
 
