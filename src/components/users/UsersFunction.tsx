@@ -19,7 +19,7 @@ type responseType = {
     items: Array<itemsType>
 
 }
-export const Users = (props: any) => {
+export const UsersFunction = (props: any) => {
     if (props.user.length === 0) {
         axios.get<responseType>('https://social-network.samuraijs.com/api/1.0/users').then((response) => {
             props.setUsers(response.data.items)
