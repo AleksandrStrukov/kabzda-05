@@ -5,7 +5,7 @@ import userPhoto from '../../assets/images/images.jpg'
 import axios from "axios";
 import {render} from "@testing-library/react";
 import any = jasmine.any;
-import {setTotelUsersCountAC} from "../../redux/usersReducer";
+import {setTotelUsersCount} from "../../redux/usersReducer";
 
 type photoResponseType = {
     small: null | string
