@@ -45,7 +45,7 @@ export type storeType = {
     dispatch: (action:any)=>void
 }
 
-export let store: storeType = {
+let store: storeType = {
     _state: {
         profilePage: {
             posts: [
@@ -98,4 +98,3 @@ export let store: storeType = {
 }
 
 export default store;
-// window.store = store;

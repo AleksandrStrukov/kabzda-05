@@ -7,9 +7,8 @@ type initialStateType = {
     dialogsPage: dialogsPageType
 }
 
-let initialState: initialStateType = {
-    dialogsPage: {
-        messagesData: [
+let initialState: dialogsPageType = {
+            messagesData: [
             {id: 1, message: 'Hey!'},
             {id: 2, message: 'How is the weather like today!'},
             {id: 3, message: 'Whats up!'},
@@ -31,8 +30,8 @@ let initialState: initialStateType = {
             {id: 2, name: 'Sara'},
             {id: 3, name: 'Tania'}
         ]
-    }}
-const DialogsReducer = (state: initialStateType = initialState, action: any) => {
+    }
+const DialogsReducer = (state: dialogsPageType = initialState, action: any) => {
 
 
 
@@ -42,11 +41,11 @@ const DialogsReducer = (state: initialStateType = initialState, action: any) => 
 
             return {...state, newMessageBody: action.body};
         case SEND_MESSAGE:
-            let body = state.dialogsPage.newMessageBody;
+            let body = state.newMessageBody;
 
             return {...state,
                 newMessageBody: '',
-                messagesData: [...state.dialogsPage.messagesData, {id: 6, message: body}]};
+                messagesData: [...state.messagesData, {id: 6, message: body}]};
         default:
             return state;
     }
