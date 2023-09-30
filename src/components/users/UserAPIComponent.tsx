@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {Users} from "./Users.js";
+import {Users} from "./Users.jsx";
 
 type photoResponseType = {
     small: null | string

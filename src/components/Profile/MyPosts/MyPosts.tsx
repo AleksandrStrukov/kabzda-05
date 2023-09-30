@@ -1,6 +1,7 @@
 import React, {ChangeEvent, createRef, useRef} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./post/Post";
+import {AddPostActionCreactor} from "../../../redux/PropfileReducer";
 
 
 // type myPostsPropsType = {
@@ -17,7 +18,7 @@ export const MyPosts = (props: any) => {
 
 
     let addPost = () => {
-        props.addPost()
+        props.dispatch(AddPostActionCreactor())
 
     };
 

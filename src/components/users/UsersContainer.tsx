@@ -9,7 +9,7 @@ import {
     toggleIsFetching,
     unfollow
 } from "../../redux/usersReducer";
-import preloader from './../../gif/preloader.svg'
+
 
 import axios from "axios";
 import {Preloader} from "../common/preloader/preloader";
@@ -59,7 +59,7 @@ class UsersAPIComponent extends React.Component<any, any> {
 
         return <>
             {this.props.isFetching ? <Preloader/> : null}
-            <Users totelUsersCount={this.props.totelUsersCount}
+            <UsersAPIComponent totelUsersCount={this.props.totelUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
