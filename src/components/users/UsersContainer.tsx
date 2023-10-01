@@ -5,7 +5,7 @@ import {
     follow,
     setCurrentPage,
     setTotelUsersCount,
-    setUsers,
+    setUsers, toggleFollowingProgress,
     toggleIsFetching,
     unfollow
 } from "../../redux/usersReducer";
@@ -13,6 +13,7 @@ import {
 
 import axios from "axios";
 import {Preloader} from "../common/preloader/preloader";
+import {getUsers} from "../../api/Api";
 
 type photoResponseType = {
     small: null | string
@@ -37,23 +38,20 @@ class UsersAPIComponent extends React.Component<any, any> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get<responseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-            {withCredentials: true})
-            .then((response) => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotelUsersCount(response.data.totalCount)
-            });
+        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false);
+            this.props.setUsers(data.items);
+            this.props.setTotelUsersCount(data.totalCount)
+        });
     }
 
     onPageChanged = (pageNumber: number) => {
 
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get<responseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-            {withCredentials: true})
-            .then((response) => {
-                this.props.setUsers(response.data.items)
+        getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
+                this.props.setUsers(data.items)
             });
         this.props.toggleIsFetching(false);
     }
@@ -68,6 +66,8 @@ class UsersAPIComponent extends React.Component<any, any> {
                                Users={this.props.users}
                                follow={this.props.follow}
                                unfollow={this.props.unfollow}
+                               toggleFollowingProgress={this.props.toggleFollowingProgress}
+                               followingInProgress={this.props.followingInProgress}
             />
         </>
 
@@ -81,11 +81,12 @@ let maoStateToProps = (state: any) => {
         pageSize: state.usersPage.pageSize,
         totelUsersCount: state.usersPage.totelUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
 
 export default connect(maoStateToProps, {
-    follow, unfollow, setUsers, setCurrentPage, setTotelUsersCount, toggleIsFetching
+    follow, unfollow, setUsers, setCurrentPage, setTotelUsersCount, toggleIsFetching, toggleFollowingProgress
 })(UsersAPIComponent);
