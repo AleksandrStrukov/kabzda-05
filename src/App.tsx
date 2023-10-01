@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {Header} from "./components/Header/Header";
+import {HeaderContainer} from "./components/Header/HeaderContainer";
 import {Navbar} from "./components/Nav/Nav";
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import {News} from './components/News/News';
@@ -14,7 +14,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 const App = (props: any) => {
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <Navbar friends={store.getState().DialogsPage.friends}/>
 
             <div className='app-wrapper-content'>

@@ -37,7 +37,8 @@ class UsersAPIComponent extends React.Component<any, any> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get<responseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get<responseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            {withCredentials: true})
             .then((response) => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -49,7 +50,8 @@ class UsersAPIComponent extends React.Component<any, any> {
 
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get<responseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get<responseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+            {withCredentials: true})
             .then((response) => {
                 this.props.setUsers(response.data.items)
             });
@@ -60,12 +62,12 @@ class UsersAPIComponent extends React.Component<any, any> {
         return <>
             {this.props.isFetching ? <Preloader/> : null}
             <UsersAPIComponent totelUsersCount={this.props.totelUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}
-                   Users={this.props.users}
-                   follow={this.props.follow}
-                   unfollow={this.props.unfollow}
+                               pageSize={this.props.pageSize}
+                               currentPage={this.props.currentPage}
+                               onPageChanged={this.onPageChanged}
+                               Users={this.props.users}
+                               follow={this.props.follow}
+                               unfollow={this.props.unfollow}
             />
         </>
 
@@ -82,29 +84,6 @@ let maoStateToProps = (state: any) => {
         isFetching: state.usersPage.isFetching
     }
 }
-
-// let mapDispatchToProps = (dispatch: any) => {
-//     return {
-//         follow: (userID: string) => {
-//             dispatch(followAC(userID));
-//         },
-//         unfollow: (userID: string): void => {
-//             dispatch(unfollowAC(userID));
-//         },
-//         setUsers: (users: any) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (pageNumber: number) => {
-//             dispatch(setCurrentPageAC(pageNumber))
-//         },
-//         setTotelUsersCount: (totalCount: number) => {
-//             dispatch(setTotelUsersCountAC(totalCount))
-//         },
-//         toggleIsFetching: (isFetching:boolean) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-//     }
-// }
 
 
 export default connect(maoStateToProps, {
