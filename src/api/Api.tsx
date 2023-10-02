@@ -21,11 +21,11 @@ export const getProfile = (UserID: any) => {
 export const getHeader = (currentPage = 1, pageSize = 10) => {
     instance.get('auth/me', ).then(response => response.data)
 }
-export const getUnFollow = (u:any) => {
-    instance.delete(`follow/?${u.id}`, ).then(response => response.data)
+export const getUnFollow = (userID:any) => {
+    instance.delete(`follow/?${userID}`, ).then(response => response.data)
   }
-export const getFollow = (u:any) => {
-    instance.post(`follow/?${u.id}`, ).then(response => response.data)
+export const getFollow = (userID:any) => {
+    instance.post(`follow/?${userID}`, ).then(response => response.data)
 }
 
 

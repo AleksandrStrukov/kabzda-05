@@ -5,9 +5,9 @@ import {connect} from "react-redux";
 import {setAuthUserData} from "../../redux/auth-Reducer";
 import {getHeader} from "../../api/Api";
 
-class HeaderContainer extends React.Component {
+export class HeaderContainer extends React.Component {
     componentDidMount() {
-        getHeader
+        getHeader()
             .then((data) => {
                 if (data.resultCode === 0) {
                     let {userID, email, login} = data.data;

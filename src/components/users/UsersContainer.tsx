@@ -1,17 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Users} from "./Users";
+
 import {
-    follow,
+    followSuccess,
     setCurrentPage,
-    setTotelUsersCount,
-    setUsers, toggleFollowingProgress,
-    toggleIsFetching,
-    unfollow
+    toggleFollowingProgress,
+    unfollowSuccess
 } from "../../redux/usersReducer";
 
 
-import axios from "axios";
 import {Preloader} from "../common/preloader/preloader";
 import {getUsers} from "../../api/Api";
 
@@ -37,23 +34,13 @@ class UsersAPIComponent extends React.Component<any, any> {
 
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotelUsersCount(data.totalCount)
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+
     }
 
     onPageChanged = (pageNumber: number) => {
+        this.props.getUsers(pageNumber, this.props.pageSize);
 
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
-        getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.setUsers(data.items)
-            });
-        this.props.toggleIsFetching(false);
     }
     render = () => {
 
@@ -66,7 +53,6 @@ class UsersAPIComponent extends React.Component<any, any> {
                                Users={this.props.users}
                                follow={this.props.follow}
                                unfollow={this.props.unfollow}
-                               toggleFollowingProgress={this.props.toggleFollowingProgress}
                                followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -88,5 +74,5 @@ let maoStateToProps = (state: any) => {
 
 
 export default connect(maoStateToProps, {
-    follow, unfollow, setUsers, setCurrentPage, setTotelUsersCount, toggleIsFetching, toggleFollowingProgress
+    follow: followSuccess, unfollow: unfollowSuccess, setCurrentPage, toggleFollowingProgress, getUsers
 })(UsersAPIComponent);
