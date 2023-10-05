@@ -7,10 +7,12 @@ import {stateType} from "../../redux/state";
 let mapStateToProps = (state: stateType)=>{
     return {
         dialogsPage: state.dialogsPage
+        isAuth:state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch:any)=>{
     return {
+
         updateNewMessageBody: (body: string)=> {
             dispatch(UpdateNewMessageBodyCreactor(body))
         },

@@ -10,7 +10,7 @@ let initialState = {
     id: null,
     email: null,
     login: null,
-    isFetching: false
+    isAuth: false
 };
 const AuthReducer = (state: any = initialState, action: any) => {
 
@@ -18,7 +18,8 @@ const AuthReducer = (state: any = initialState, action: any) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isAuth:true
             }
 
         case UNFOLLOW:

@@ -3,7 +3,7 @@ import {Profile} from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
 import {getUserProfile} from "../../redux/PropfileReducer";
-import {withRouter} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {getProfile} from "../../api/Api";
 
 type ProfileContainerType = {
@@ -13,7 +13,7 @@ type ProfileContainerType = {
     profile:any
 }
 
-class ProfileContainer extends React.Component<ProfileContainerType> {
+export class ProfileContainer extends React.Component<ProfileContainerType> {
 
     componentDidMount() {
         let UserID = this.props.match.params.userID;
@@ -26,6 +26,9 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
 
     render() {
+        if (!this.props.isAuth)
+            return <Redirect to={'/Login'}/>
+
         return (
             <div>
                 <Profile {...this.props} profile={this.props.profile}/>
@@ -36,7 +39,8 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
 
 let mapStateToProps = (state: any) => ({
     profile: state.profilePage.profile
+    isAuth:state.auth.isAuth
 });
 
-let WithURLDataContainerComponent = withRouter(ProfileContainer);
+let WithURLDataContainerComponent = useParams(ProfileContainer);
 export default connect(mapStateToProps, {getUserProfile})(WithURLDataContainerComponent);
