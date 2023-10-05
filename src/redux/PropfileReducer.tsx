@@ -1,4 +1,5 @@
 import {postsType} from "./state";
+import {getProfile} from "../api/Api";
 
 
 const ADD_POST = 'ADD-POST';
@@ -11,7 +12,7 @@ type SetUserProfileType = {
 type initialStateType = {
     posts: Array<postsType>
     newPostText: string
-    profile?: null|any
+    profile?: null | any
 }
 let initialState: initialStateType = {
     posts: [
@@ -45,6 +46,12 @@ const ProfileReducer = (state: initialStateType = initialState, action: any) => 
 }
 export const AddPostActionCreactor = () => ({type: ADD_POST})
 export const setUserProfile = (profile: any): SetUserProfileType => ({type: SET_USER_PROFILE, profile})
+export const getUserProfile = (userID: any) => (dispatch: any) => {
+    getProfile(userID)
+        .then((data: any) => {
+            dispatch(setUserProfile(data));
+        });
+}
 export const UpdateNewPostTextActionCreactor = (text: string) => ({
     type: UPDATE_NEW_POST_TEXT, newText: text
 })
