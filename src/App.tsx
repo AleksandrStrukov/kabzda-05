@@ -10,11 +10,12 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import store from "./redux/reduxStore";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import Login from "./components/login/login";
 
 const App = (props: any) => {
     return (
         <div className='app-wrapper'>
-            <HeaderContainer/>
+            <HeaderContainer {store.getStatee}/>
             <Navbar friends={store.getState().DialogsPage.friends}/>
 
             <div className='app-wrapper-content'>
