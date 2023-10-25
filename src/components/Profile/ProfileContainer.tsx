@@ -1,11 +1,9 @@
 import React from "react";
 import {Profile} from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
 import {getUserProfile} from "../../redux/PropfileReducer";
-import {Redirect, useParams, withRouter} from "react-router-dom";
-import {getProfile} from "../../api/Api";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {withRouter} from "react-router-dom";
 
 type ProfileContainerType = {
     id: string
